@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f5ff">
+    <meta name="description" content="Un jeu interactif pour mémoriser les raccourcis clavier les plus utiles.">
+    <title>Mission raccourcis — Jeu de clavier</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Mission raccourcis, accueil">
+            <span class="brand-mark" aria-hidden="true">⌘</span>
+            <span>mission<span class="brand-accent">clavier</span></span>
+        </a>
+        <p class="topbar-note"><span class="status-dot" aria-hidden="true"></span> Entraînement actif</p>
+    </header>
+
+    <main class="page-shell">
+        <section class="hero" aria-labelledby="page-title">
+            <div>
+                <p class="eyebrow">✦ TON TERRAIN D’ENTRAÎNEMENT</p>
+                <h1 id="page-title">Les raccourcis,<br><span>ça va plus vite.</span></h1>
+                <p class="hero-description">Lis la mission, puis utilise les raccourcis au clavier ou écris ta réponse.</p>
+            </div>
+            <div class="hero-doodle" aria-hidden="true">
+                <span class="doodle-key">Ctrl</span><span class="doodle-plus">+</span><span class="doodle-key">?</span>
+            </div>
+        </section>
+
+        <section class="game-section" aria-label="Jeu des raccourcis clavier">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">À TOI DE JOUER</p>
+                    <h2 id="game-question-heading">Quelle est la bonne combinaison ?</h2>
+                </div>
+                <button class="reset-button" id="reset-button" type="button">Recommencer</button>
+            </div>
+
+            <div class="game-layout">
+                <section class="game-card" aria-labelledby="mission-label">
+                    <div class="card-topline">
+                        <span id="mission-label">MISSION <span id="round-number">00</span></span>
+                        <span class="score-pill">⭐ <span id="score">0</span> point<span id="score-plural">s</span></span>
+                    </div>
+                    <div class="progress-track" role="progressbar" aria-label="Progression des missions" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+                        <span id="progress-bar"></span>
+                    </div>
+                    <button class="start-button" id="start-button" type="button">Start <span aria-hidden="true">→</span></button>
+                    <div class="challenge" id="challenge" hidden>
+                        <span class="challenge-icon" id="challenge-icon" aria-hidden="true">✂</span>
+                        <p class="challenge-kicker">TA MISSION</p>
+                        <h2 id="question" aria-live="polite">Chargement de la mission…</h2>
+                        <p class="challenge-description" id="description"></p>
+                    </div>
+                    <div class="keyboard-prompt" id="keyboard-prompt" hidden>
+                        Appuie sur <strong>Ctrl</strong> et la bonne touche, ou écris la commande ci-dessous puis valide avec Entrée.
+                    </div>
+                    <section class="exercise-board" id="exercise-board" aria-label="Exercice de manipulation de texte" hidden>
+                        <div class="text-panel">
+                            <label for="source-text">Texte de départ</label>
+                            <div class="text-editor-frame">
+                                <div class="line-numbers" id="source-line-numbers" aria-hidden="true"></div>
+                                <textarea class="text-editor" id="source-text" rows="6" wrap="off" spellcheck="false" aria-label="Texte de départ"></textarea>
+                            </div>
+                        </div>
+                        <div class="exercise-instruction" id="exercise-instruction" aria-live="polite"></div>
+                        <div class="text-panel">
+                            <label for="destination-text">Texte à compléter</label>
+                            <div class="text-editor-frame">
+                                <div class="line-numbers" id="destination-line-numbers" aria-hidden="true"></div>
+                                <textarea class="text-editor" id="destination-text" rows="6" wrap="off" spellcheck="false" aria-label="Texte à compléter"></textarea>
+                            </div>
+                        </div>
+                    </section>
+                    <form class="answer-form" id="answer-form" hidden>
+                        <label for="answer-command">Ta réponse <span>(ex. Ctrl+C)</span></label>
+                        <div class="answer-controls">
+                            <input id="answer-command" name="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Écris le raccourci" aria-describedby="feedback" required>
+                            <button class="submit-button" id="submit-answer" type="submit">Valider <span aria-hidden="true">→</span></button>
+                        </div>
+                    </form>
+                    <div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
+                    <button class="next-button" id="next-button" type="button" hidden>Mission suivante <span aria-hidden="true">→</span></button>
+                </section>
+                <aside class="iteration-panel" aria-label="Chronomètre et temps des missions">
+                    <section class="timer-card" aria-labelledby="timer-title">
+                        <h3 id="timer-title">Temps de la mission</h3>
+                        <p class="timer-value" id="mission-timer">00:00</p>
+                    </section>
+                    <section class="iteration-card" aria-labelledby="iteration-title">
+                        <h3 id="iteration-title">Temps par mission</h3>
+                        <ol class="iteration-list" id="iteration-list" aria-live="polite">
+                            <li class="iteration-empty">Les durées apparaîtront ici.</li>
+                        </ol>
+                    </section>
+                </aside>
+            </div>
+        </section>
+        <footer class="page-footer">
+            <span class="footer-message">Un raccourci appris, du temps gagné <span aria-hidden="true">♥</span></span>
+            <small class="copyright">© Nicolas Enuset</small>
+        </footer>
+    </main>
+</body>
+</html>
